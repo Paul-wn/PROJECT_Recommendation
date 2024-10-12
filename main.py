@@ -1009,8 +1009,8 @@ def styled_text_reply():
 
 
 app = Flask(__name__)
-access_token = 'KEQE+K0OdVF7xyxrir+LepnC70OWBNM4DHxcpre9+Nd8eLDZV5c8XMLxticHhyiBX6GAeyM/Z2Y5FQpj1nWQLB53qfhYX5CV6wTRWHuxKhGJuK8lTxzLIrkcja/Q1a4GdOq5wxY7KKehTsBcGmjohgdB04t89/1O/w1cDnyilFU=' 
-secret = 'c0dd0a46b60b1233d1bfd0fab9ffbbf3'
+access_token = 'XD' 
+secret = 'XD'
 line_bot_api = LineBotApi(access_token)              
 handler = WebhookHandler(secret)                     
 @app.route("/", methods=['POST'])
@@ -1083,35 +1083,4 @@ if __name__ == '__main__':
     app.run(port=5000 , debug= True)
 
 
-
-
-
-app = Flask(__name__)
-access_token = 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx' 
-secret = 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
-line_bot_api = LineBotApi(access_token)              
-handler = WebhookHandler(secret)                     
-@app.route("/", methods=['POST'])
-def linebot():
-    global asking , filter_list , summit , filter, selected_product_properties
-    body = request.get_data(as_text=True)                    
-    try:
-        json_data = json.loads(body)                         
-        signature = request.headers['X-Line-Signature']      
-        handler.handle(body, signature)                      
-        msg = json_data['events'][0]['message']['text']      
-        tk = json_data['events'][0]['replyToken']
-        user_id = json_data['events'][0]['source']['userId'] 
-        print(asking)
-        if asking == 1 :
-            history_graph(user_id , 'ลักษณะของน้ำหอมที่คุณต้องการ' , msg)
-        elif asking == 2:
-            history_graph(user_id , 'ลักษณะของน้ำหอมที่คุณต้องการ' , msg) 
-
-        print('00000000000000000000000000000000000000')
-        return_message(line_bot_api,tk,user_id,msg)
-        print(msg, tk) 
-    except:
-        print(body)                                          
-    return 'OK'
 
